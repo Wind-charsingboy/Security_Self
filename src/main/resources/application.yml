@@ -6,5 +6,7 @@ security:
     client:
       clientId: self
       clientSecret: selfSecret
+#     这句必须加 不然会报错At least one redirect_uri must be registered with the client
+      registered-redirect-uri: http://example.com
 
 
