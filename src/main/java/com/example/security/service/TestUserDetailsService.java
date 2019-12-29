@@ -27,7 +27,7 @@ public class TestUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         log.info("当前登陆用户是:{}", userName);
         //此处不加ROLE_USER会报403 Access_Deniedd的错误
-        return new User(userName, passwordEncoder.encode("111111"),
+        return new User(userName, passwordEncoder.encode("123456"),
                 AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN, ROLE_USER"));
     }
 }

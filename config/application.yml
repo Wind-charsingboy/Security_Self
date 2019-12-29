@@ -1,5 +1,12 @@
 server:
   port: 8989
+  servlet:
+    context-path: /server
+
+#这个可以被TestUserDetailsService来代替 在那里密码可以从数据库中查
+#security:
+#  user:
+#    password: 123456
 
 #可以被TestAuthorizationServerConfig替代
 #security:
