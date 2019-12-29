@@ -1,5 +1,6 @@
 package com.example.security.config;
 
+import com.example.security.authorize.AuthorizeConfigManager;
 import com.example.security.service.TestUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -16,6 +17,9 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
 @Configuration
 public class TestSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager;
+
     /**
      * 不加这个配置 会报错User must be authenticated with Spring Security before authorization can be completed.
      * 覆盖掉configure方法 就是不用spring提供的那一套弹出登录 改为表单登录
@@ -28,9 +32,16 @@ public class TestSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated();
+//                .authorizeRequests()
+//                    .antMatchers("aaa", "bbbb", "cccc")
+//                    .permitAll()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+                .csrf().disable();
+
+        //这段代码就可以取代掉上面注释的那一段
+        authorizeConfigManager.config(http.authorizeRequests());
 
     }
 
