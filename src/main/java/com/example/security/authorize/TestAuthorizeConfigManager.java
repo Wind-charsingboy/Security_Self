@@ -5,13 +5,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Set;
 
 //这个类是用来收集系统里的所有provider 最终在TestSecurityConfig中被引入
 @Component
 public class TestAuthorizeConfigManager implements AuthorizeConfigManager {
     @Autowired
-    private Set<AuthorizeConfigProvider> authorizeConfigProviders;
+    private List<AuthorizeConfigProvider> authorizeConfigProviders;
 
 
     @Override
@@ -20,6 +21,8 @@ public class TestAuthorizeConfigManager implements AuthorizeConfigManager {
             authorizeConfigProvider.config(config);
         }
         //除了provider提供器里面的路径 其他都需要身份认证才能访问
-        config.anyRequest().authenticated();
+
+        //为了rbac测试 先注释掉
+//        config.anyRequest().authenticated();
     }
 }
