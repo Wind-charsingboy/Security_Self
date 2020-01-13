@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class TestAuthorizeConfigProvider implements AuthorizeConfigProvider {
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-        config.antMatchers("aaa", "bbbb", "cccc")
+        config.antMatchers("/user/*", "bbbb", "cccc")
                 .permitAll();
     }
 }

@@ -22,7 +22,7 @@ public class TestAuthorizeConfigManager implements AuthorizeConfigManager {
         }
         //除了provider提供器里面的路径 其他都需要身份认证才能访问
 
-        //为了rbac测试 先注释掉
-//        config.anyRequest().authenticated();
+//        为了rbac测试 先注释掉
+        config.anyRequest().authenticated();
     }
 }

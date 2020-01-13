@@ -1,6 +1,7 @@
 package com.example.security.service.impl;
 
-import com.example.authorize.service.RbacService;
+
+import com.example.security.service.RbacService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
